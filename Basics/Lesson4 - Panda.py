@@ -16,6 +16,10 @@ arguments = [sep=',', header='infer', index_col=None, usecols=None,
             quotechar='"', quoting=0, doublequote=True, escapechar=None, comment=None,
             encoding=None, dialect=None, error_bad_lines=True, warn_bad_lines=True,
             delim_whitespace=False, low_memory=True, memory_map=False, float_precision=None]
+# Merge data franes 
+df = df1.merge(df2, left_on='collumn', right_index=Boolean if custom index )
+# Create subset data frame from the original with only the selected collumn and another collumn you can apply a function to
+df.groupby('collumn_you_group_by')['collumn_you_apply_function_to_then_append'].function()
 # Sort values by collumn
 df.sort_values('values_by_collumn', ascending= Boolean)
 # Select collumn
@@ -46,3 +50,5 @@ arguments = [sep=',', na_rep='', float_format=None, columns=None,
              compression='infer', quoting=None, quotechar='"', line_terminator=None, 
              chunksize=None, date_format=None, doublequote=True, escapechar=None, 
              decimal='.', errors='strict']
+# Applies 'function' to every element of 'column_name'
+df['column_name'].apply(lambda x: function(x))  
