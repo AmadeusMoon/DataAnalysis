@@ -16,6 +16,16 @@ arguments = [sep=',', header='infer', index_col=None, usecols=None,
             quotechar='"', quoting=0, doublequote=True, escapechar=None, comment=None,
             encoding=None, dialect=None, error_bad_lines=True, warn_bad_lines=True,
             delim_whitespace=False, low_memory=True, memory_map=False, float_precision=None]
+# Sort values by collumn
+df.sort_values('values_by_collumn', ascending= Boolean)
+# Select collumn
+df['collumn_name']
+# Get data types
+df.dtypes()
+# Drop missing values
+df.dropna() 
+# Fill missing values
+df.fillna(value) 
 ## Retrieves rows and collumns description
 df.shape
 ## Self explanatory
