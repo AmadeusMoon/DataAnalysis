@@ -1,5 +1,5 @@
 # Panda makes use of Numpy and Mattplotlib
-import panda as pd
+import pandas as pd
 
 file = 'file.extension'
 # This is where the data is extracted 
