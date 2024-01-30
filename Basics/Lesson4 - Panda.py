@@ -3,7 +3,7 @@ import pandas as pd
 
 file = 'file.extension'
 # This is where the data is extracted 
-df = pd_read_csv(file, arguments)
+df = pd.read_csv(file, arguments)
 ## Arguments
 arguments = [sep=',', header='infer', index_col=None, usecols=None,
             squeeze=False, prefix=None, mangle_dupe_cols=True, dtype=None, engine=None,
@@ -17,7 +17,7 @@ arguments = [sep=',', header='infer', index_col=None, usecols=None,
             encoding=None, dialect=None, error_bad_lines=True, warn_bad_lines=True,
             delim_whitespace=False, low_memory=True, memory_map=False, float_precision=None]
 # Merge data franes 
-df = df1.merge(df2, left_on='collumn', right_index=Boolean if custom index )
+df = df1.merge(df2, left_on='collumn', right_index=Boolean if customIndex )
 # Create subset data frame from the original with only the selected collumn and another collumn you can apply a function to
 df.groupby('collumn_you_group_by')['collumn_you_apply_function_to_then_append'].function()
 # Sort values by collumn

@@ -1,0 +1,37 @@
+Sector,Industry,Total Revenue (USD millions),Total Employees,Mean Revenue Growth,Company Count,Annual Employee Salary,Mean revenue in industry,Mean jobs created by industry
+Manufacturing Sector,Aerospace and defense,132592,272000,0.04,2,487470.59,66296.00,136000.00
+Manufacturing Sector,Agriculture cooperative,47194,10014,0.24,1,4712802.08,47194.00,10014.00
+Manufacturing Sector,Agriculture manufacturing,52577,82239,0.19,1,639319.54,52577.00,82239.00
+Services Sector,Airline,144508,317495,0.72,3,455150.47,48169.33,105831.67
+Manufacturing Sector,Apparel,46710,79100,0.05,1,590518.33,46710.00,79100.00
+Services Sector,Automotive and energy,81462,127855,0.51,1,637143.64,81462.00,127855.00
+Manufacturing Sector,Automotive industry,314792,340000,0.20,2,925858.82,157396.00,170000.00
+Primary Sector,Beverage,86859,315000,0.09,1,275742.86,86859.00,315000.00
+Manufacturing Sector,Chemical industry,56902,37800,0.04,1,1505343.92,56902.00,37800.00
+Services Sector,Conglomerate,445718,737000,0.06,3,604773.41,148572.67,245666.67
+Services Sector,Conglomerate and telecomunications,120741,160700,0.28,1,751344.12,120741.00,160700.00
+Manufacturing Sector,Consumer products manufacturing,80187,106000,0.05,1,756481.13,80187.00,106000.00
+Manufacturing Sector,Electronics industry,394328,164000,0.08,1,2404439.02,394328.00,164000.00
+Services Sector,Financial,1034337,1087171,0.18,13,951402.31,79564.38,83628.54
+Services Sector,Financial services,154792,293723,0.22,1,526999.93,154792.00,293723.00
+Services Sector,Food industry,67232,23000,0.14,1,2923130.43,67232.00,23000.00
+Manufacturing Sector,Food processing,202032,218006,0.31,3,926726.79,67344.00,72668.67
+Services Sector,Food service,68636,70510,0.34,1,973422.21,68636.00,70510.00
+Services Sector,Health insurance,273386,137331,0.08,2,1990708.58,136693.00,68665.50
+Services Sector,Healthcare,1466079,1181035,0.10,7,1241351.02,209439.86,168719.29
+Services Sector,Infotech,62344,28500,0.97,1,2187508.77,62344.00,28500.00
+Services Sector,Insurance,265861,200563,0.07,5,1325573.51,53172.20,40112.60
+Manufacturing Sector,Laboratory instruments,44915,130000,0.14,1,345500.00,44915.00,130000.00
+Services Sector,Logistics,78620,576000,0.02,1,136493.06,78620.00,576000.00
+Manufacturing Sector,Machinery,59427,109100,0.17,1,544702.11,59427.00,109100.00
+Services Sector,Media,82722,195800,0.23,1,422482.12,82722.00,195800.00
+Primary Sector,Petroleum industry,1521225,183470,0.49,10,8291410.04,152122.50,18347.00
+Primary Sector,Petroleum industry and logistics,59043,5214,0.88,1,11323935.56,59043.00,5214.00
+Manufacturing Sector,Pharmaceutical industry,730059,692000,0.09,7,1054998.55,104294.14,98857.14
+Services Sector,Retail,1578909,4830850,0.07,10,326838.76,157890.90,483085.00
+Services Sector,Retail and cloud computing,513983,1540000,0.09,1,333755.19,513983.00,1540000.00
+Services Sector,Technology,389147,460382,0.12,5,845269.80,77829.40,92076.40
+Services Sector,Technology and cloud computing,541636,680100,0.15,3,796406.41,180545.33,226700.00
+Manufacturing Sector,Telecom hardware manufacturing,51557,83300,0.04,1,618931.57,51557.00,83300.00
+Services Sector,Telecommunications,312284,404800,0.04,3,771452.57,104094.67,134933.33
+Services Sector,Transportation,193850,922949,0.07,2,210033.27,96925.00,461474.50
