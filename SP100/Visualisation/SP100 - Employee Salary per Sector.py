@@ -7,7 +7,7 @@ dfEconomic = pd.read_csv('SP100/Tables/Economy.csv')
 
 # List of columns to convert back to numeric
 cols_to_convert = ['Total Revenue (USD millions)', 'Total Employees',
-                   'Annual Employee Salary', 'Mean revenue per Company in industry', 'Mean jobs created per Company by industry']
+                   'Annual Employee Salary in Industry', 'Mean revenue per Company in Industry', 'Mean jobs created per Company by Industry']
 
 for col in cols_to_convert:
     # Remove commas and convert to float
@@ -15,7 +15,7 @@ for col in cols_to_convert:
 
 # Retrieve data
 employeesBySector = dfEconomic.groupby('Sector')['Total Employees'].sum()
-meanSalaryBySector = dfEconomic.groupby('Sector')['Annual Employee Salary'].sum(
+meanSalaryBySector = dfEconomic.groupby('Sector')['Annual Employee Salary in Industry'].sum(
 ) / dfEconomic.groupby('Sector')['Industry'].count()
 companiesBySector = dfEconomic['Sector'].value_counts()
 meanSalary = meanSalaryBySector.mean()
@@ -56,8 +56,10 @@ handles = [Line2D([0], [0], marker='o', color='w', markerfacecolor=c, markersize
 # Add number of employees inside bars
 for i, sector in enumerate(meanSalaryBySector.index):
     numEmployees = employeesBySector[sector]
+    # Adjust the vertical position of the text based on the mean salary
+    va = 'top' if meanSalaryBySector[sector] > meanSalary else 'top'
     plt.text(i, meanSalaryBySector[sector], f'Employees: {numEmployees:,.0f}',
-             ha='center', va='bottom', color='black')
+             ha='center', va=va, color='black')
 
 plt.legend(handles, legend_labels, title="Mean Salary by Sector",
            loc="upper right", bbox_to_anchor=(0.24, 1.3))

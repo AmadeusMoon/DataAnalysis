@@ -56,14 +56,14 @@ newDf = df.groupby('Industry').agg(
 
 # Rename output columns
 newDf.columns = ['Industry', 'Total Revenue (USD millions)',
-                 'Total Employees', 'Mean Revenue Growth', 'Company Count']
+                 'Total Employees', 'Mean Revenue Growth per Industry', 'Company Count']
 
 # Mean revenue per company in each industry
-newDf['Mean revenue per Company in industry'] = newDf[
+newDf['Mean revenue per Company in Industry'] = newDf[
     'Total Revenue (USD millions)'] / newDf['Company Count']
 
 # Mean ammount of jobs created per company in industry
-newDf['Mean jobs created per Company by industry'] = newDf[
+newDf['Mean jobs created per Company by Industry'] = newDf[
     'Total Employees'] / newDf['Company Count']
 
 # Service sector
@@ -92,11 +92,11 @@ def assignCategory(industry):
 newDf['Sector'] = newDf['Industry'].apply(assignCategory)
 
 # Define the column order
-column_order = ['Sector', 'Industry', 'Total Revenue (USD millions)', 'Total Employees', 'Mean Revenue Growth',
-                'Company Count', 'Annual Employee Salary', 'Mean revenue per Company in industry', 'Mean jobs created per Company by industry']
+column_order = ['Sector', 'Industry', 'Total Revenue (USD millions)', 'Total Employees', 'Mean Revenue Growth per Industry',
+                'Company Count', 'Annual Employee Salary in Industry', 'Mean revenue per Company in Industry', 'Mean jobs created per Company by Industry']
 
 # Add a salary per employee yearly depending on industry
-newDf['Annual Employee Salary'] = newDf.apply(lambda row: (
+newDf['Annual Employee Salary in Industry'] = newDf.apply(lambda row: (
     row['Total Revenue (USD millions)'] * 1000000 * percentages[row['Industry']]) / row['Total Employees'], axis=1)
 
 # Reindex the DataFrame
@@ -104,7 +104,7 @@ newDf = newDf.reindex(columns=column_order)
 
 # Convert all columns to the a nicer more readeable format
 for col in newDf.select_dtypes(include=[np.number]).columns:
-    if col != 'Revenue growth':
+    if col != 'Mean Revenue Growth per Industry':
         newDf[col] = newDf[col].map('{:,.2f}'.format)
 
 # Export data as file

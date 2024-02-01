@@ -6,7 +6,7 @@ dfSectors = pd.read_csv('SP100/Tables/Economy.csv')
 
 # List of columns to convert back to numeric
 cols_to_convert = ['Total Revenue (USD millions)', 'Total Employees',
-                   'Mean revenue per Company in industry', 'Mean jobs created per Company by industry']
+                   'Mean revenue per Company in Industry', 'Mean jobs created per Company by Industry']
 
 for col in cols_to_convert:
     dfSectors[col] = dfSectors[col].str.replace(',', '').astype(float)
