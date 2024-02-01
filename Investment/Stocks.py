@@ -1,10 +1,9 @@
-# %%
 from Deductions import calculate_future_values_after_tax_and_fee
 import matplotlib.lines as mlines
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
-import matplotlib
+
 
 # Your investment amount
 investment = 1000
@@ -90,5 +89,4 @@ plt.title('Years vs Benefit')
 plt.xlabel('Years')
 plt.ylabel('Benefit ($)')
 plt.grid(True)
-plt.show()
-# %%
+plt.savefig('Investment.png', bbox_inches='tight')

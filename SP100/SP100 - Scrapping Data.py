@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 import pandas as pd
 import requests
+import numpy as np
 
 # Import data from page
 url = 'https://en.wikipedia.org/wiki/List_of_largest_companies_in_the_United_States_by_revenue'
@@ -50,6 +51,19 @@ df['Industry'] = df['Industry'].replace('Health', 'Healthcare')
 
 # Archer Daniel Midlands is food processing
 df.loc[df['Name'] == 'Archer Daniels Midland', 'Industry'] = 'Food processing'
+
+# Convert all columns to the a nicer more readable format
+def custom_format(x):
+    if x % 1 == 0:
+        return '{:,.0f}'.format(x)
+    else:
+        return '{:,.2f}'.format(x)
+
+
+# Convert all columns to the a nicer more readable format
+for col in df.select_dtypes(include=[np.number]).columns:
+    if col != 'Revenue growth':
+        df[col] = df[col].apply(custom_format)
 
 # Export data frame
 df.to_csv('SP100.csv', index=False)

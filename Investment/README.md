@@ -37,4 +37,4 @@ This project is built using the following technologies:
 
 ## Future Work
 
-I am actively working on addressing the current limitations to make this tool more versatile and accurate. Feel free to drop by any feedback or suggestions.
+I am actively working on addressing the current limitations to make this tool more versatile and accurate. Feel free to drop by any feedback or suggestions. # %%

@@ -2,7 +2,15 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Import the Economy csv file
-dfSectors = pd.read_csv('./Tables/Economy.csv')
+dfSectors = pd.read_csv('SP100/Tables/Economy.csv')
+
+# List of columns to convert back to numeric
+cols_to_convert = ['Total Revenue (USD millions)', 'Total Employees',
+                   'Mean revenue per Company in industry', 'Mean jobs created per Company by industry']
+
+for col in cols_to_convert:
+    dfSectors[col] = dfSectors[col].str.replace(',', '').astype(float)
+
 # Group the companies in sectors and sum their total number per sector
 companies = dfSectors.groupby('Sector')['Company Count'].sum()
 
@@ -30,6 +38,12 @@ for text in texts:
     text.set_fontsize(14)
 for autotext in autotexts:
     autotext.set_fontsize(14)
+
+legend_labels = [f'{sector}: {companies:.0f} companies' for sector,
+                 companies in companies.items()]
+
+plt.legend(legend_labels, title="Sectors",
+           loc="upper right", bbox_to_anchor=(0.24, 1.16))
 
 # Save the figure to a file
 plt.savefig('SP100 - Companies by Sector.png')
