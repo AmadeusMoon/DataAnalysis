@@ -35,7 +35,7 @@ def calculate_inflation_adjusted_value(present_value):
     for i in range(len(additional_inflation_rates)):
         if additional_inflation_rates[i] > ceiling:
             additional_inflation_rates[i] /= 2
-
+    # Add inflation to years
     years = np.concatenate((years, additional_years))
     inflation_rates = np.concatenate(
         (inflation_rates, additional_inflation_rates))

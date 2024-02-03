@@ -8,10 +8,9 @@ This project is a tool designed to assist with investment decisions. It's curren
 
 Users will be able to input the following parameters to tailor the tool to their specific investment scenario:
 
-1. **Investment Amount**: The desired sum to invest.
-2. **Investment Type**: The nature of the investment (long-term or short-term). This is important as different tax rates apply when selling stocks based on the investment type.
-3. **Investment Duration**: The exact duration of the investment.
-4. **Annual Income**: Required for calculating the benefits of short-term investments, which are based on the user's income tax bracket.
+1. **Investment Duration**: The exact duration of the investment.
+2. **Investment Amount**: The desired sum to invest.
+3. **Annual Income**: Required for calculating the benefits of short-term investments, which are based on the user's income tax bracket.
 
 ### Inflation Calculation
 
@@ -22,7 +21,7 @@ The tool calculates inflation based on a set growth rate of +2% per year. Howeve
 The tool currently has the following limitations:
 
 - Intermediary fees are not considered.
-- The company-related growth per year approximation is currently set at 10%, which is the average for S&P 500 companies.
+- The company-related growth per year approximation is currently set at 20%, which is the average for S&P 100 companies. [SP100]('https://github.com/AmadeusMoon/DataAnalysis/tree/943bc03a9feea83e1848e90b2f58cb0f5f755cab/SP100').
 - The tax brackets are currently only for the USA.
 - The inflation rate is currently only for the USA economy.
 
