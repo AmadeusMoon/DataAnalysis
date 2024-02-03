@@ -21,7 +21,7 @@ The tool calculates inflation based on a set growth rate of +2% per year. Howeve
 The tool currently has the following limitations:
 
 - Intermediary fees are not considered.
-- The company-related growth per year approximation is currently set at 20%, which is the average for S&P 100 companies. For more information check [SP100]("https://github.com/AmadeusMoon/DataAnalysis/tree/master/SP100") .
+- The company-related growth per year approximation is currently set at 20%, which is the average for S&P 100 companies. For more information check [SP100](https://github.com/AmadeusMoon/DataAnalysis/tree/master/SP100) .
 - The tax brackets are currently only for the USA.
 - The inflation rate is currently only for the USA economy.
 
