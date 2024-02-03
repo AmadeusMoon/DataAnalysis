@@ -42,4 +42,4 @@ legend_labels = [f'{sector}: {employees:,.0f} employees' for sector,
 plt.legend(legend_labels, title="Sectors",
            loc="upper right", bbox_to_anchor=(0.3, 1.16))
 
-plt.savefig('SP100 - Employees by Sector.png')
+plt.savefig('SP100-Employees_by_Sector.png')

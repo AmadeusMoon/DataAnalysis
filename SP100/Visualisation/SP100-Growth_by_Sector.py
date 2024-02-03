@@ -31,4 +31,4 @@ sector_labels = [f'{sector}: {value:,.2f}' for sector,
 overall_label = f'Overall Mean: {meanGrowth:,.2f}'
 plt.legend([*ax.patches, ax.lines[0]], sector_labels + [overall_label])
 
-plt.savefig('SP100 - Mean Revenue Growth by Sector.png', bbox_inches='tight')
+plt.savefig('SP100-Mean_Revenue_Growth_by_Sector.png', bbox_inches='tight')

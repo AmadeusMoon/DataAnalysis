@@ -46,4 +46,4 @@ plt.legend(legend_labels, title="Sectors",
            loc="upper right", bbox_to_anchor=(0.24, 1.16))
 
 # Save the figure to a file
-plt.savefig('SP100 - Companies by Sector.png')
+plt.savefig('SP100-Companies_by_Sector.png')

@@ -40,4 +40,4 @@ legend_labels = [f'{sector}: {revenue:,.0f} revenue' for sector,
 plt.legend(legend_labels, title='Total revenue in USD millions',
            loc="upper right", bbox_to_anchor=(0.28, 1.16))
 
-plt.savefig('SP100 - Revenue by Sector.png')
+plt.savefig('SP100-Revenue-by_Sector.png')

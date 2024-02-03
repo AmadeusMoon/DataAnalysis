@@ -64,4 +64,4 @@ for i, sector in enumerate(meanSalaryBySector.index):
 plt.legend(handles, legend_labels, title="Mean Salary by Sector",
            loc="upper right", bbox_to_anchor=(0.24, 1.3))
 
-plt.savefig('SP100 - Mean Salary by Sector.png', bbox_inches='tight')
+plt.savefig('SP100-Mean_Salary_by_Sector.png', bbox_inches='tight')
