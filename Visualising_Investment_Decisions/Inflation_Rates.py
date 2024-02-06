@@ -1,4 +1,3 @@
-# %%
 from bs4 import BeautifulSoup
 import pandas as pd
 import requests
@@ -39,6 +38,11 @@ df = pd.DataFrame(data, columns=cleanHeaders)
 # Rename the last column to be more descriptive
 df.rename(columns={'Ave': 'Mean Inflation'}, inplace=True)
 
+# Ensure that your 'Year' column is of type int or float
+df['Year'] = df['Year'].astype(int)
+
+# Sort the DataFrame by 'Year' in ascending order
+df = df.sort_values('Year')
+
 # Export file to csv table
 df.to_csv('US_Inflation_Rates.csv', index=False)
-# %%
