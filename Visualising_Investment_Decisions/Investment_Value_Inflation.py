@@ -2,13 +2,7 @@ from Inflation_Calculator import get_inflation
 from dateutil import parser
 import numpy as np
 
-def calculate_adjusted_values(investment: int, investment_start: str, investment_end: str = None):
-
-    # Get the data values in the period specified by user
-    monthly_inflation = get_inflation(investment_start, investment_end)
-
-    # Create inflation ceiling
-    ceiling = np.percentile(monthly_inflation, 83)
+def calculate_adjusted_values(investment: int, investment_start: str, investment_end: str):
 
     # Check if investment_end and parse it
     try:
@@ -19,6 +13,12 @@ def calculate_adjusted_values(investment: int, investment_start: str, investment
                 raise ValueError("Year_end must be after 2000.")
     except ValueError:
         print("Invalid start_date format. 'Month-Day-Year'.")
+
+    # Get the data values in the period specified by user
+    monthly_inflation = get_inflation(investment_start, investment_end)
+
+    # Create inflation ceiling
+    ceiling = np.percentile(monthly_inflation, 83)
 
     # Add aditional years if investment_end is over last year in table
     if end_year > 2023:
@@ -36,7 +36,10 @@ def calculate_adjusted_values(investment: int, investment_start: str, investment
         # If there are no additional years then the inflation rates will be the monthly inflation
         inflation_rates = monthly_inflation
 
+    # Calculate depreciation of dollar due to inflation
+    depreciation = investment * inflation_rates / 100
+
     # Calculate values adjusting for inflation
-    adjusted_values = investment * (1 + inflation_rates)
+    adjusted_values = investment + depreciation
 
     return adjusted_values

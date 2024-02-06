@@ -16,7 +16,7 @@ long_term_brackets = np.array([44625, 492300, 50000])
 long_term_rates = np.array([0.00, 0.15, 0.20])
 
 # Calculate value of investments after taxes
-def calculate_future_values_after_tax_and_fee(investment: int, investment_start: str, investment_end: str = None):
+def calculate_future_values_after_tax_and_fee(investment: int, investment_start: str, investment_end: str, income=None):
 
     # Parse dates
     try:
@@ -59,32 +59,42 @@ def calculate_future_values_after_tax_and_fee(investment: int, investment_start:
     # Call the functions to get the values
     values_clean = calculate_true_value(
         investment, investment_start, investment_end)
-    values_adjusted = calculate_adjusted_values(
-        investment_start, investment_end)
+    values_adjusted = calculate_adjusted_values(investment,
+                                                investment_start, investment_end)
 
-    # Calculate the future value of the investment after accounting for inflation and average annual growth
-    future_value = values_clean * (1 + average_anual_growth_SP100)**years
-    inflated_values = values_adjusted * (1 + average_anual_growth_SP100)**years
+    # Copy arrays
+    future_values = values_clean.copy()
+    inflated_values = values_adjusted.copy()
 
-    # Calculate the SEC fee $22.90 per $1 million
-    sec_fee_value = future_value * (22.90 / 1e6)
-    sec_fee_valued_inflated = values_adjusted * (22.90 / 1e6)
+    # Loop through array and apply 20% growth only every 12 months
+    for i in range(len(values_clean)):
 
-    # Calculate the tax
-    tax_value = np.array([calculate_taxes(brackets, rates, fv)
-                         for fv in future_value])
-    tax_value_adjusted = np.array(
-        [calculate_taxes(brackets, rates, fv) for fv in inflated_values])
+        if i % 12 == 0:  # Apply the growth every 12 values
+            future_values[i:] *= 1 + average_anual_growth_SP100
+            inflated_values[i:] *= 1 + average_anual_growth_SP100
 
-    # Subtract the SEC fee and tax from the future value
-    future_values_after_tax_and_fee = future_value - sec_fee_value - tax_value
-    adjusted_values_after_tax_and_fee = inflated_values - \
-        sec_fee_valued_inflated - tax_value_adjusted
+        # Calculate the SEC fee $22.90 per $1 million
+        sec_fee_value = future_values[i] * (22.90 / 1e6)
+        sec_fee_valued_inflated = inflated_values[i] * (22.90 / 1e6)
+
+        if income is None:
+            tax_value = calculate_taxes(brackets, rates, future_values[i])
+            tax_value_adjusted = calculate_taxes(
+                brackets, rates, inflated_values[i])
+        else:
+            # Calculate the tax based on income
+            tax_value = calculate_taxes(brackets, rates, income)
+            tax_value_adjusted = calculate_taxes(
+                brackets, rates, income)
+
+        # Subtract the SEC fee and tax from the future value
+        future_values[i] -= sec_fee_value + tax_value
+        inflated_values[i] -= sec_fee_valued_inflated + tax_value_adjusted
 
     # Future value after inflation
-    clean_future_values = np.round(future_values_after_tax_and_fee)
+    clean_future_values = np.round(future_values)
 
     # Future value accounting for inflation
-    adjusted_future_values = np.round(adjusted_values_after_tax_and_fee)
+    adjusted_future_values = np.round(inflated_values)
 
     return {'clean': clean_future_values, 'inflation': adjusted_future_values}

@@ -7,7 +7,7 @@ inflation_rates_file = '/home/amadeusmoon/Projects/DataAnalysis/Visualising_Inve
 inflation_rates = pd.read_csv(inflation_rates_file)
 
 # Return inflation rate for user specified data until most recent
-def get_inflation(investment_start: str, investment_end: str = None):
+def get_inflation(investment_start: str, investment_end: str):
     # Test the input
     try:
         # Parse the user input and retrieve it

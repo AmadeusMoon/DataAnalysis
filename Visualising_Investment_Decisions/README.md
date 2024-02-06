@@ -1,20 +1,21 @@
 # Visualizing Investment Decisions
 
-This project is a tool designed to assist with investment decisions. It's currently under development and will offer the following features:
+This project is a tool designed to assist with investment decisions. It's currently under development and offers the following features:
 
 ## Features
 
 ### Investment Parameters
 
-Users will be able to input the following parameters to tailor the tool to their specific investment scenario:
+Users is be able to input the following parameters to tailor the tool to their specific investment scenario:
 
-1. **Investment Duration**: The exact duration of the investment.
-2. **Investment Amount**: The desired sum to invest.
-3. **Annual Income**: Required for calculating the benefits of short-term investments, which are based on the user's income tax bracket.
+1. **Investment Amount**: The desired sum to invest.
+2. **Investment Start**: The start date of the investment.
+3. **Investment End**: The end date of the investment.
+4. **Annual Income**: If provided it will be used to calculate taxes, eelse taxes will be calculated assuming the investment value is the income.
 
 ### Inflation Calculation
 
-The tool calculates inflation based on a set growth rate of +2% per year. However, there is a ceiling set at 83% of historical inflation rates. If the calculated inflation for the current year hits this ceiling, it will be treated as a trigger for government intervention. This means that we assume the government would take measures to control inflation, and therefore, the inflation rate would be halved for the next year to simulate a bounce back to normal inflation rates.
+The tool calculates inflation based on a set growth rate of +2% per year. However, there is a ceiling set at 90% of historical inflation rates ( 4.1% inflation ). If the calculated inflation for the current year hits this ceiling, it will be treated as a trigger for government intervention. This means that we assume the government would take measures to control inflation, and therefore, the inflation rate would be halved for the next year to simulate a bounce back to normal inflation rates.
 
 ## Current Limitations
 
@@ -30,11 +31,9 @@ The tool currently has the following limitations:
 
 This project is built using the following technologies:
 
+- BeautifullSoup
 - Matplotlib
+- Requests
 - Python
 - Pandas
 - Numpy
-
-## Future Work
-
-I am actively working on addressing the current limitations to make this tool more versatile and accurate. Feel free to drop by any feedback or suggestions. # %%
