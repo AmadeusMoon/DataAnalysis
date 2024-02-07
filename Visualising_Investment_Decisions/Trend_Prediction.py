@@ -1,8 +1,4 @@
-import importlib
-
-# Import function
-Inflation_Calculator = importlib.import_module("2.Inflation_Calculator")
-get_inflation = Inflation_Calculator.get_inflation
+from Inflation_Calculator import get_inflation
 
 # Return the trend for the data input by user
 def get_trend(investment_start: str, investment_end: str = None):
