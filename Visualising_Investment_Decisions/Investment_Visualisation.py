@@ -4,8 +4,8 @@ import matplotlib.pyplot as plt
 from datetime import datetime
 import pandas as pd
 
-def Visualise_Investment(investment: int, investment_start: str, investment_end: str):
-
+def Visualise_Investment(investment: int, investment_start: str, investment_end: str, income: int=None):
+    
     # Parse date
     start = datetime.strptime(investment_start, "%m-%d-%Y")
     end = datetime.strptime(investment_end, "%m-%d-%Y")
@@ -15,9 +15,9 @@ def Visualise_Investment(investment: int, investment_start: str, investment_end:
 
     # Get values
     true_returns = calculate_values(
-        investment, investment_start, investment_end)
+        investment, investment_start, investment_end, income)
     adjusted_returns = calculate_values(
-        investment, investment_start, investment_end)
+        investment, investment_start, investment_end, income)
 
     # Access the returns
     clean_returns = true_returns['clean']
