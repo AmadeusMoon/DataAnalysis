@@ -16,7 +16,7 @@ long_term_brackets = np.array([44625, 492300, 50000])
 long_term_rates = np.array([0.00, 0.15, 0.20])
 
 # Calculate value of investments after taxes
-def calculate_future_values_after_tax_and_fee(investment: int, investment_start: str, investment_end: str, income=None):
+def calculate_future_values_after_tax_and_fee(investment: int, investment_start: str, investment_end: str, income: int=None):
 
     # Parse dates
     try:
