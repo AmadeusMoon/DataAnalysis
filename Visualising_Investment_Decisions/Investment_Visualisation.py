@@ -4,14 +4,21 @@ import matplotlib.pyplot as plt
 from datetime import datetime
 import pandas as pd
 
-def Visualise_Investment(investment: int, investment_start: str, investment_end: str, income: int=None):
-    
+
+def Visualise_Investment(investment: int, investment_start: str, investment_end: str, income: int = None):
+
     # Parse date
     start = datetime.strptime(investment_start, "%m-%d-%Y")
     end = datetime.strptime(investment_end, "%m-%d-%Y")
 
     # Calculate the number of years between the start and end dates
     months = pd.date_range(start=start, end=end, freq='MS')
+
+    # Null check
+    if income == None:
+        income = 0
+    else:
+        income = income
 
     # Get values
     true_returns = calculate_values(

@@ -1,5 +1,5 @@
 # Calculate tax based on income
-def calculate_taxes(brackets, rates, income=None):
+def calculate_taxes(brackets, rates, income: int = None):
 
     # Define income if undefined
     if income is None:

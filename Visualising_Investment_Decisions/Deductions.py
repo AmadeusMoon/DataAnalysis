@@ -16,7 +16,9 @@ long_term_brackets = np.array([44625, 492300, 50000])
 long_term_rates = np.array([0.00, 0.15, 0.20])
 
 # Calculate value of investments after taxes
-def calculate_future_values_after_tax_and_fee(investment: int, investment_start: str, investment_end: str, income: int=None):
+
+
+def calculate_future_values_after_tax_and_fee(investment: int, investment_start: str, investment_end: str, income: int = None):
 
     # Parse dates
     try:
@@ -73,28 +75,31 @@ def calculate_future_values_after_tax_and_fee(investment: int, investment_start:
             future_values[i:] *= 1 + average_anual_growth_SP100
             inflated_values[i:] *= 1 + average_anual_growth_SP100
 
-        # Calculate the SEC fee $22.90 per $1 million
-        sec_fee_value = future_values[i] * (22.90 / 1e6)
-        sec_fee_valued_inflated = inflated_values[i] * (22.90 / 1e6)
+    # Calculate the SEC fee $22.90 per $1 million
+    sec_fee_value = future_values[-1] * (22.90 / 1e6)
+    sec_fee_valued_inflated = inflated_values[-1] * (22.90 / 1e6)
 
-        if income is None:
-            tax_value = calculate_taxes(brackets, rates, future_values[i])
-            tax_value_adjusted = calculate_taxes(
-                brackets, rates, inflated_values[i])
-        else:
-            # Calculate the tax based on income
-            tax_value = calculate_taxes(brackets, rates, income)
-            tax_value_adjusted = calculate_taxes(
-                brackets, rates, income)
+    if income is None:
+        tax_value = calculate_taxes(brackets, rates, future_values[-1])
+        tax_value_adjusted = calculate_taxes(
+            brackets, rates, inflated_values[-1])
+    else:
+        # Calculate the tax based on income
+        tax_value = calculate_taxes(brackets, rates, income)
+        tax_value_adjusted = calculate_taxes(
+            brackets, rates, income)
 
-        # Subtract the SEC fee and tax from the future value
-        future_values[i] -= sec_fee_value + tax_value
-        inflated_values[i] -= sec_fee_valued_inflated + tax_value_adjusted
+    # Calculate the total deductions
+    total_deductions = sec_fee_value + tax_value
+    total_deductions_inflated = sec_fee_valued_inflated + tax_value_adjusted
 
-    # Future value after inflation
-    clean_future_values = np.round(future_values)
+    # Spread the deductions evenly across all the values
+    deductions_per_value = total_deductions / len(future_values)
+    deductions_per_value_inflated = total_deductions_inflated / \
+        len(inflated_values)
 
-    # Future value accounting for inflation
-    adjusted_future_values = np.round(inflated_values)
+    # Subtract the deductions from each value
+    future_values -= deductions_per_value
+    inflated_values -= deductions_per_value_inflated
 
-    return {'clean': clean_future_values, 'inflation': adjusted_future_values}
+    return {'clean': future_values, 'inflation': inflated_values}
